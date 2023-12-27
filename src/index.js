@@ -1,13 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+import { ApiProvider } from "@reduxjs/toolkit/query/react";
+import { api } from "./store/slice"; // Import your RTK Query API
+
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+
+const root = document.getElementById("root") || document.createElement("div");
+
+ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <App />
+    <ApiProvider api={api}>
+      <App />
+    </ApiProvider>
   </React.StrictMode>
 );
 
